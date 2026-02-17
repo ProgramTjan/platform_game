@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Arial', sans-serif;
+}
+
+#gameContainer {
+    position: relative;
+    width: 1200px;
+    height: 900px;
+    background: #87CEEB;
+    border: 4px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#hud {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    z-index: 10;
+}
+
+#lives, #score, #level {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+#menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: white;
+}
+
+#menu.hidden {
+    display: none;
+}
+
+#menu h1 {
+    font-size: 48px;
+    margin-bottom: 40px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    animation: bounce 0.6s infinite alternate;
+}
+
+@keyframes bounce {
+    from { transform: translateY(-10px); }
+    to { transform: translateY(10px); }
+}
+
+#startButton {
+    padding: 15px 40px;
+    font-size: 24px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#startButton:hover {
+    background: #ff5252;
+    transform: scale(1.05);
+}
+
+#startButton:active {
+    transform: scale(0.95);
+}
+
+#controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#controls p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #ccc;
+}

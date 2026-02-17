@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Platformer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="600" height="450"></canvas>
+        <div id="hud">
+            <div id="lives">Lives: <span id="livesCount">3</span></div>
+            <div id="score">Score: <span id="scoreCount">0</span></div>
+            <div id="level">Level: <span id="levelCount">1</span></div>
+        </div>
+        <div id="menu">
+            <h1>🍄 MARIO PLATFORMER</h1>
+            <button id="startButton">START GAME</button>
+            <div id="controls">
+                <p>← → - Move</p>
+                <p>SPACE - Jump</p>
+                <p>↓ - Enter pipe</p>
+                <p>ESC - Menu</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="src/game.js"></script>
+</body>
+</html>
