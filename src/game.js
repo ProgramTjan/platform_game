@@ -22,6 +22,7 @@ export class Game {
         this.isVictory = false;
         this.currentLevel = 1;
         this.totalScore = 0;
+        this.highScore = parseInt(localStorage.getItem('platformer_highscore') || '0', 10);
 
         // Initialize systems
         this.input = new Input();
@@ -53,7 +54,19 @@ export class Game {
             if (e.key === 'Escape') {
                 this.togglePause();
             }
+            if (e.key === 'r' || e.key === 'R') {
+                if (this.gameOver || this.isVictory) {
+                    this.start();
+                }
+            }
         });
+    }
+
+    _saveHighScore() {
+        if (this.totalScore > this.highScore) {
+            this.highScore = this.totalScore;
+            localStorage.setItem('platformer_highscore', String(this.highScore));
+        }
     }
 
     start() {
@@ -131,6 +144,7 @@ export class Game {
         // Check lose condition (fell off map of geen levens meer)
         if (this.player.y > 650 || this.player.lives <= 0) {
             this.gameOver = true;
+            this._saveHighScore();
         }
 
         // Update camera
@@ -220,7 +234,7 @@ export class Game {
 
         // Draw HUD
         const isSecret = this.currentLevelData?.isSecret || false;
-        this.hud.render(this.ctx, this.player.lives, this.totalScore, this.currentLevel, isSecret);
+        this.hud.render(this.ctx, this.player.lives, this.totalScore, this.currentLevel, isSecret, this.highScore);
 
         // Draw pause message
         if (this.isPaused) {
@@ -229,9 +243,9 @@ export class Game {
 
         // Draw victory of game over
         if (this.isVictory) {
-            this.renderer.drawVictory(this.totalScore);
+            this.renderer.drawVictory(this.totalScore, this.highScore);
         } else if (this.gameOver) {
-            this.renderer.drawGameOver(this.totalScore);
+            this.renderer.drawGameOver(this.totalScore, this.highScore);
         }
     }
 
@@ -250,6 +264,7 @@ export class Game {
         // Check if we've beaten all regular levels
         if (this.currentLevel > this.levelManager.getRegularLevelCount()) {
             this.isVictory = true;
+            this._saveHighScore();
             return;
         }
 

@@ -40,25 +40,27 @@ export class Renderer {
         this.drawText('Press ESC to continue', this.canvas.width / 2, this.canvas.height / 2 + 30, 14, '#CCCCCC', 'center');
     }
 
-    drawGameOver(score) {
+    drawGameOver(score, highScore = 0) {
         // Semi-transparent overlay
         this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
         // Text
-        this.drawText('GAME OVER', this.canvas.width / 2, this.canvas.height / 2 - 20, 36, '#FF0000', 'center');
-        this.drawText(`Final Score: ${score}`, this.canvas.width / 2, this.canvas.height / 2 + 15, 18, '#FFFFFF', 'center');
-        this.drawText('Refresh to play again', this.canvas.width / 2, this.canvas.height / 2 + 40, 12, '#CCCCCC', 'center');
+        this.drawText('GAME OVER', this.canvas.width / 2, this.canvas.height / 2 - 30, 36, '#FF0000', 'center');
+        this.drawText(`Score: ${score}`, this.canvas.width / 2, this.canvas.height / 2 + 10, 18, '#FFFFFF', 'center');
+        this.drawText(`🏆 Best: ${highScore}`, this.canvas.width / 2, this.canvas.height / 2 + 35, 16, '#FFD700', 'center');
+        this.drawText('Press R to play again', this.canvas.width / 2, this.canvas.height / 2 + 60, 12, '#CCCCCC', 'center');
     }
 
-    drawVictory(score) {
+    drawVictory(score, highScore = 0) {
         // Semi-transparent overlay
         this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
         // Text
-        this.drawText('VICTORY!', this.canvas.width / 2, this.canvas.height / 2 - 20, 36, '#FFD700', 'center');
-        this.drawText(`Final Score: ${score}`, this.canvas.width / 2, this.canvas.height / 2 + 15, 18, '#FFFFFF', 'center');
-        this.drawText('You beat all levels!', this.canvas.width / 2, this.canvas.height / 2 + 40, 12, '#CCCCCC', 'center');
+        this.drawText('VICTORY!', this.canvas.width / 2, this.canvas.height / 2 - 30, 36, '#FFD700', 'center');
+        this.drawText(`Score: ${score}`, this.canvas.width / 2, this.canvas.height / 2 + 10, 18, '#FFFFFF', 'center');
+        this.drawText(`🏆 Best: ${highScore}`, this.canvas.width / 2, this.canvas.height / 2 + 35, 16, '#FFD700', 'center');
+        this.drawText('Press R to play again', this.canvas.width / 2, this.canvas.height / 2 + 60, 12, '#CCCCCC', 'center');
     }
 }
